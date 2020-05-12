@@ -21,7 +21,7 @@
         <!-- new stuff -->
 
         <a-assets>
-    <img id="my-image" src="images/techno.jpg">
+    <img id="techno" src="images/techno.jpg">
   </a-assets>
 
     <a-curvedimage src="#my-image" height="3.0" radius="5.7" theta-length="72"
@@ -33,10 +33,11 @@
         <a-dodecahedron
         position="-1 0.5 -3"
         animation="property: rotation; to: 0 360 0; loop: true; dur: 1000; easing: linear;"
-        animation__2="property: position; to: -1 2 -3; dir: alternate; loop: true; dur: 1000; easing: easeInOutElastic;"
+        animation__2="property: position; to: -1 2 -3; dir: alternate; loop: true; dur: 500;"
 
 
         color="cornflowerblue"
+        material="src: #techno"
         shadow>
 
         </a-dodecahedron>
