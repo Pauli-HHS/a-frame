@@ -1,7 +1,1 @@
-<h1>AFrame workshop</h1>
-    <a href="01HelloWorld/">01HelloWorld</a><br>
-    <a href="02Shape/">02Shape</a><br>
-    <a href="03Textures/">03Textures</a><br>
-    <a href="04Animation/">04Animation</a><br>
-    <a href="05Interaction/">05Interaction</a><br>
-    <a href="06InteractionHeadset/">06InteractionHeadset</a><br>
+# A-frame Workshop
