@@ -10,7 +10,7 @@ Ke 0.0 0.0 0.0
 Ni 1.450000
 d 1.000000
 illum 1
-map_Bump D:\\YandexDisk\\Work\\Models_for_magazine\\Wooden_stuff\\Wooden_box_square_01\\Source\\Substance_textures\\Unity5\\Wooden_box_01_Normal.png
-map_Kd D:\\YandexDisk\\Work\\Models_for_magazine\\Wooden_stuff\\Wooden_box_square_01\\Source\\Substance_textures\\PBR\\Wooden_box_01_BaseColor.png
-map_Ns D:\\YandexDisk\\Work\\Models_for_magazine\\Wooden_stuff\\Wooden_box_square_01\\Source\\Substance_textures\\PBR\\Wooden_box_01_Roughness.png
-refl D:\\YandexDisk\\Work\\Models_for_magazine\\Wooden_stuff\\Wooden_box_square_01\\Source\\Substance_textures\\PBR\\Wooden_box_01_Metallic.png
+map_Bump ../images/Wooden_box_01_Normal.png
+map_Kd ../images/Wooden_box_01_BaseColor.png
+map_Ns ../images/Wooden_box_01_OcclusionRoughnessMetallic.png
+refl ../images/Wooden_box_01_OcclusionRoughnessMetallic.png
