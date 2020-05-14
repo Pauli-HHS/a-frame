@@ -13,17 +13,24 @@
           <img id="wood" src="images/wood.jpg" />
           <img id="metal" src="images/metal-plate.jpg" />
           <img id="grass" src="images/grass.jpg" />
+
+          <a-asset-item id="tree" src="models/LowPolyTree.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera>
         <a-entity id="mouseCursor"
-          cursor="fuse: true; fuseTimeout: 1500">
-        </a-entity>
-        <a-ring id="cursorRing"
+          cursor="fuse: true;"
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 2 2 2"
+          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+
           position="0 0 -1"
-          radius-inner= "0.02"
-          radius-outer= "0.03"
-          material="color: orange; shader: flat">
+
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="color: orange; shader: flat"
+          >
+        </a-entity>
+        <a-ring id="cursorRing">
         </a-ring>
       </a-camera>
 
@@ -57,6 +64,8 @@
         src="#metal"
         shadow>
       </a-box>
+
+       <a-entity gltf-model="#tree" scale="0.25 0.25 0.25" position=" 3 0 2"></a-entity>
       <a-plane id="ground"
         position="0 0 -4"
         rotation="-90 0 0"
