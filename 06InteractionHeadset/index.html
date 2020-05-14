@@ -5,16 +5,22 @@
     <title>Hello, WebVR! • A-Frame</title>
     <meta name="viewport" content="width=device-width">
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
     <script src="scripts/main.js" defer></script>
   </head>
   <body>
-    <a-scene background="color: #333333">
+
+    <!-- Try changing the preset to one of default, contact, egypt, checkerboard, forest, goaland, yavapai, goldmine,
+         threetowers, poison, arches, tron, japan, dream, volcano, starry, osiris. -->
+    <!-- See more environment options: https://github.com/feiss/aframe-environment-component#parameters -->
+    <a-scene environment="preset: goaland; dressingAmount: 200; dressingScale: 5;">
       <a-assets>
           <img id="wood" src="images/wood.jpg" />
           <img id="metal" src="images/metal-plate.jpg" />
           <img id="grass" src="images/grass.jpg" />
 
           <a-asset-item id="tree" src="models/LowPolyTree.gltf"></a-asset-item>
+          <a-asset-item id="earth"  src="models/Earthanimation.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera>
@@ -65,8 +71,8 @@
         shadow>
       </a-box>
 
-       <a-entity gltf-model="#tree" scale="0.25 0.25 0.25" position=" 3 0 2"></a-entity>
-      <a-plane id="ground"
+       <a-entity gltf-model="earth"></a-entity>
+      <!--a-plane id="ground"
         position="0 0 -4"
         rotation="-90 0 0"
         width="100"
@@ -74,7 +80,7 @@
         color="#7BC8A4"
         material="src: #grass; repeat: 10 10"
         shadow>
-      </a-plane>
+      </a-plane-->
     </a-scene>
   </body>
 </html>
