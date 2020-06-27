@@ -8,17 +8,17 @@
 
 
 <a-assets>
-  <img id="milkyway" src="2k_stars.jpg">
-  <img id="sun-texture" src="2k_sun.jpg">
-  <img id="mercury-texture" src="2k_mercury.jpg">
-  <img id="venus-texture" src="2k_venus_atmosphere.jpg">
-  <img id="earth-texture" src="2k_earth_daymap.jpg">
-  <img id="mars-texture" src="2k_mars.jpg">
-  <img id="jupiter-texture" src="2k_jupiter.jpg">
-  <img id="saturn-texture" src="2k_saturn.jpg">
-  <img id="saturn-ring-texture" src="2k_saturn_ring_alpha.png">
-  <img id="uranus-texture" src="2k_uranus.jpg">
-  <img id="neptune-texture" src="2k_neptune.jpg">
+  <img id="milkyway" src="media/2k_stars.jpg">
+  <img id="sun-texture" src="media/2k_sun.jpg">
+  <img id="mercury-texture" src="media/2k_mercury.jpg">
+  <img id="venus-texture" src="media/2k_venus_atmosphere.jpg">
+  <img id="earth-texture" src="media/2k_earth_daymap.jpg">
+  <img id="mars-texture" src="media/2k_mars.jpg">
+  <img id="jupiter-texture" src="media/2k_jupiter.jpg">
+  <img id="saturn-texture" src="media/2k_saturn.jpg">
+  <img id="saturn-ring-texture" src="media/2k_saturn_ring_alpha.png">
+  <img id="uranus-texture" src="media/2k_uranus.jpg">
+  <img id="neptune-texture" src="media/2k_neptune.jpg">
 
 </a-assets>
 
@@ -26,11 +26,11 @@
 
 <a-entity light="type: ambient; color: white; intensity: 0.5"></a-entity>
 
-<a-entity light="type: directional; color: white; intensity: 1" position="-1 0 0">
+<a-entity light="type: point; color: white; intensity: 1" position="-1 0 0">
 </a-entity>
 
-<a-entity id="rig" position="15 5 0" rotation="0 65 0">
-  <a-entity id="camera" camera look-controls wasd-controls zoom="2"></a-entity>
+<a-entity id="rig" position="0 2 2" rotation="0 20 0">
+  <a-entity id="camera" camera look-controls wasd-controls="acceleration:  100;  fly:  true;  wsAxis:  y"></a-entity>
 </a-entity>
 
 
@@ -38,7 +38,7 @@
 
 <a-sphere id="sun"
 src="#sun-texture"
-position="0 2 -10"
+position="0 0 0"
 radius ="1"
 animation="
 property: rotation;
@@ -49,7 +49,7 @@ easing: linear;">
 </a-sphere>
 
 <a-entity id="mercury"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -70,7 +70,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity id="venus"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -91,7 +91,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity  id="earth"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -112,7 +112,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity id="mars"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -133,7 +133,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity id="jupiter"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -154,7 +154,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity id="saturn"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -162,13 +162,7 @@ loop: true;
 dur: 29500;
 easing: linear;">
 <a-entity
-position="6 0 0"
-animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 450;
-easing: linear;">
+position="6 0 0">
 <a-sphere
 src="#saturn-texture"
 radius ="0.45">
@@ -179,13 +173,14 @@ color="white"
 radius-inner="0.5"
 radius-outer="0.75"
 opacity="0.5"
-rotation="108 0 0">
+rotation="0 0 0"
+>
 </a-ring>
 </a-entity>
 </a-entity>
 
 <a-entity id="uranus"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
@@ -206,7 +201,7 @@ easing: linear;">
 </a-entity>
 
 <a-entity id="neptune"
-position="0 2 -10"
+position="0 0 0"
 animation="
 property: rotation;
 to: 0 360 0;
