@@ -18,7 +18,7 @@
   <img id="mars-texture" src="media/2k_mars.jpg">
   <img id="jupiter-texture" src="media/2k_jupiter.jpg">
   <img id="saturn-texture" src="media/2k_saturn.jpg">
-  <img id="saturn-ring-texture" src="media/2k_saturn_ring_alpha.png">
+  <img id="saturn-ring-texture" src="media/saturns-ring.png">
   <img id="uranus-texture" src="media/2k_uranus.jpg">
   <img id="neptune-texture" src="media/2k_neptune.jpg">
 
@@ -199,13 +199,14 @@ dur: 29500;
 easing: linear;">
 <a-entity
 position="6 0 0">
+<a-entity
+rotation="-28 0 0">
 <a-sphere
 src="#saturn-texture"
 radius ="0.45"
-rotation="-28 0 0"
 animation="
 property: rotation;
-to: -28 360 0;
+to: 0 360 0;
 loop: true;
 dur: 500;
 easing: linear;">
@@ -215,10 +216,9 @@ easing: linear;">
 src="#saturn-ring-texture"
 height="0.01"
 radius="0.75"
-opacity="0.75"
-rotation="-28 0 0">
-
+opacity="0.99">
 </a-cylinder>
+</a-entity>
 </a-entity>
 </a-entity>
 
