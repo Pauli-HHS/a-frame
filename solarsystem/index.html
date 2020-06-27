@@ -26,7 +26,7 @@
 
 <a-sky src="#milkyway"></a-sky>
 
-<!--a-entity light="type: ambient; color: white; intensity: 0.5"></a-entity-->
+<a-entity light="type: ambient; color: white; intensity: 0.25"></a-entity>
 
 <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0">
 </a-entity>
@@ -63,12 +63,12 @@ emissiveIntensity: 0.5;
 blending:  additive;"
 opacity="0.99";
 position="0 0 0"
-radius ="1.01"
+radius ="1.05"
 animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 23000;
+dur: 20000;
 easing: linear;">
 </a-sphere>
 
@@ -107,7 +107,7 @@ position="2 0 -0"
 radius ="0.15"
 animation="
 property: rotation;
-to: 0 360 0;
+to: 0 -360 0;
 loop: true;
 dur: 243000;
 easing: linear;">
@@ -201,17 +201,30 @@ easing: linear;">
 position="6 0 0">
 <a-sphere
 src="#saturn-texture"
-radius ="0.45">
+radius ="0.45"
+rotation="-28 0 0"
+animation="
+property: rotation;
+to: -28 360 0;
+loop: true;
+dur: 500;
+easing: linear;">
 </a-sphere>
 
-<a-ring id="saturn-ring"
-color="white"
-radius-inner="0.5"
-radius-outer="0.75"
-opacity="0.5"
-rotation="0 0 0"
->
-</a-ring>
+<a-cylinder id="saturn-ring"
+src="#saturn-ring-texture"
+height="0.01"
+radius="0.75"
+opacity="0.75"
+rotation="-28 0 0"
+animation="
+property: rotation;
+to: -28 360 0;
+loop: true;
+dur: 500;
+easing: linear;">
+
+</a-cylinder>
 </a-entity>
 </a-entity>
 
