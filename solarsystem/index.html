@@ -14,6 +14,7 @@
   <img id="mercury-texture" src="media/2k_mercury.jpg">
   <img id="venus-texture" src="media/2k_venus_atmosphere.jpg">
   <img id="earth-texture" src="media/2k_earth_daymap.jpg">
+  <img id="earth-clouds" src="media/2k_earth_clouds.png"
   <img id="mars-texture" src="media/2k_mars.jpg">
   <img id="jupiter-texture" src="media/2k_jupiter.jpg">
   <img id="saturn-texture" src="media/2k_saturn.jpg">
@@ -116,6 +117,18 @@ loop: true;
 dur: 1000;
 easing: linear;">
 </a-sphere>
+<a-sphere
+src="#earth-clouds"
+position="2.5 0 0"
+radius ="0.16"
+animation="
+property: rotation;
+to: 0 360 0;
+loop: true;
+dur: 1000;
+easing: linear;">
+</a-sphere>
+
 </a-entity>
 
 <a-entity id="mars"
