@@ -10,6 +10,7 @@
 <a-assets>
   <img id="milkyway" src="media/2k_stars.jpg">
   <img id="sun-texture" src="media/2k_sun.jpg">
+  <img id="sun-flare" src="media/2k_sun_flares.png"
   <img id="mercury-texture" src="media/2k_mercury.jpg">
   <img id="venus-texture" src="media/2k_venus_atmosphere.jpg">
   <img id="earth-texture" src="media/2k_earth_daymap.jpg">
@@ -52,6 +53,21 @@ property: rotation;
 to: 0 360 0;
 loop: true;
 dur: 24000;
+easing: linear;">
+</a-sphere>
+<a-sphere id="sun-flares"
+material="
+src: #sun-flare;
+emissive: #ffff00;
+emissiveIntensity: 0.5;""
+opacity="0.99";
+position="0 0 0"
+radius ="1.01"
+animation="
+property: rotation;
+to: 0 360 0;
+loop: true;
+dur: 23000;
 easing: linear;">
 </a-sphere>
 
@@ -118,14 +134,14 @@ easing: linear;">
 </a-sphere>
 <a-sphere
 src="#earth-clouds"
-opacity="0.95"
+opacity="0.99"
 position="2.5 0 0"
-radius ="0.16"
+radius ="0.155"
 animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 1000;
+dur: 990;
 easing: linear;">
 </a-sphere>
 
