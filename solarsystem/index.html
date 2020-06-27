@@ -10,11 +10,11 @@
 <a-assets>
   <img id="milkyway" src="media/2k_stars.jpg">
   <img id="sun-texture" src="media/2k_sun.jpg">
-  <img id="sun-flare" src="media/2k_sun_flares.png"
+  <img id="sun-flare" src="media/2k_sun_flares.png">
   <img id="mercury-texture" src="media/2k_mercury.jpg">
   <img id="venus-texture" src="media/2k_venus_atmosphere.jpg">
   <img id="earth-texture" src="media/2k_earth_daymap.jpg">
-  <img id="earth-clouds" src="media/2k_earth_clouds.png"
+  <img id="earth-clouds" src="media/2k_earth_clouds.png">
   <img id="mars-texture" src="media/2k_mars.jpg">
   <img id="jupiter-texture" src="media/2k_jupiter.jpg">
   <img id="saturn-texture" src="media/2k_saturn.jpg">
@@ -26,7 +26,7 @@
 
 <a-sky src="#milkyway"></a-sky>
 
-<a-entity light="type: ambient; color: white; intensity: 0.5"></a-entity>
+<!--a-entity light="type: ambient; color: white; intensity: 0.5"></a-entity-->
 
 <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0">
 </a-entity>
@@ -43,7 +43,7 @@
 <a-sphere id="sun"
 material="
 src: #sun-texture;
-emissive: #ffff00;
+emissive: orange;
 emissiveIntensity: 0.5;"
 
 position="0 0 0"
@@ -59,7 +59,8 @@ easing: linear;">
 material="
 src: #sun-flare;
 emissive: #ffff00;
-emissiveIntensity: 0.5;""
+emissiveIntensity: 0.5;
+blending:  additive;"
 opacity="0.99";
 position="0 0 0"
 radius ="1.01"
@@ -144,7 +145,6 @@ loop: true;
 dur: 990;
 easing: linear;">
 </a-sphere>
-
 </a-entity>
 
 <a-entity id="mars"
