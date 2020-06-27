@@ -38,8 +38,11 @@
 
 
 <a-sphere id="sun"
-src="#sun-texture"
-glow="color: #FF00FF;"
+material="
+src: #sun-texture;
+emissive: #ffff00;
+emissiveIntensity: 0.25;"
+
 position="0 0 0"
 radius ="1"
 animation="
