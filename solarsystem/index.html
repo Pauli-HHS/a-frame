@@ -10,6 +10,7 @@
 
 
     <a-assets>
+      <!-- ******** textures ******** -->
       <img id="milkyway" src="media/2k_stars.jpg">
       <img id="sun-texture" src="media/2k_sun.jpg">
       <img id="sun-flare" src="media/2k_sun_flares.png">
@@ -24,98 +25,121 @@
       <img id="uranus-texture" src="media/2k_uranus.jpg">
       <img id="neptune-texture" src="media/2k_neptune.jpg">
 
+      <!-- ******** global mixins ******** -->
+      <a-mixin id="orbit-axis-mixin"
+        geometry="primitive: torus; radius-tubular:0.002; segments-tubular: 128;"
+        material="color: white; opacity:1;"
+        rotation="90 0 0">
+      </a-mixin>
+
+      <a-mixin id="planet-orbit"
+        animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        easing: linear;">
+      </a-mixin>
+
+      <a-mixin id="planet-name"
+        animation="
+        to: 0 -360 0;"
+      </a-mixin>
+
+      <a-mixin id="planet-text"
+        position="-0.25 0.5 0" align="center">
+      </a-mixin>
+
+      <!-- ******** planet mixins ******** -->
+
+      <a-mixin id="sun-mixin"
+        material=" src: #sun-texture; emissive: orange; emissiveIntensity: 0.5;"
+        position="0 0 0"
+        radius="1">
+      </a-mixin>
+
+        <a-mixin id="sun-flares"
+        material="src: #sun-flare; emissive: #ffff00; emissiveIntensity: 0.5; blending:  additive;"
+        opacity="0.99"
+        position="0 0 0"
+        radius="1.05">
+        </a-mixin>
+
+        <a-mixin id="mercury-mixin"
+        material="src: #mercury-texture"
+        position="1.5 0 0"
+        geometry="radius: 0.1;">
+        </a-mixin>
+
+        <a-mixin id="venus-mixin"
+        material="src: #venus-texture"
+        position="2 0 -0"
+        geometry="radius: 0.15;">
+        </a-mixin>
+
+      <a-mixin id="earth-mixin"
+        geometry="radius: 0.15;"
+        material="src: #earth-texture"
+        position="2.5 0 0">
+      </a-mixin>
+
+
     </a-assets>
 
     <a-sky src="#milkyway"></a-sky>
 
+<!-- ******** lighting ******** -->
     <a-entity light="type: ambient; color: white; intensity: 0.25"></a-entity>
-
-    <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0">
-    </a-entity>
-
+    <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0"></a-entity>
+<!-- ******** camera rig & cursor ******** -->
     <a-entity id="rig" position="2.5 1.6 5" rotation="-10 25 0">
-      <a-entity id="camera" camera look-controls wasd-controls="acceleration:  100;  fly:  true;  wsAxis:  z"></a-entity>
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:  100;  fly:  true;  wsAxis:  z">
+        <a-cursor id="mouseCursor" position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: white; opacity: 0.5;">
+        </a-cursor>
+      </a-entity>
     </a-entity>
 
+<!-- ******** Solar systems starts here ******** -->
 
 
+<!-- ******** The Sun ******** -->
+    <a-entity id="sun-name" mixin="planet-name" position="0 0.75 0">
+    <a-text value="Sun" mixin="planet-text"></a-text>
+    </a-entity>
+    <a-sphere id="sun" mixin="sun-mixin planet-orbit" animation="dur: 24000;"></a-sphere>
+    <a-sphere id="sun-flares" mixin="sun-flares planet-orbit" animation="dur: 24000;"></a-sphere>
 
-
-
-    <a-sphere id="sun" material="
-src: #sun-texture;
-emissive: orange;
-emissiveIntensity: 0.5;" position="0 0 0" radius="1" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 24000;
-easing: linear;">
-    </a-sphere>
-    <a-sphere id="sun-flares" material="
-src: #sun-flare;
-emissive: #ffff00;
-emissiveIntensity: 0.5;
-blending:  additive;" opacity="0.99" ; position="0 0 0" radius="1.05" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 20000;
-easing: linear;">
-    </a-sphere>
-
-    <a-entity id="mercury" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 2410;
-easing: linear;">
-      <a-sphere src="#mercury-texture" position="1.5 0 0" radius="0.1" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 58600;
-easing: linear;">
+<!-- ******** Mercury ******** -->
+    <a-torus id="mercury-orbit" mixin="orbit-axis-mixin" radius="1.5"></a-torus>
+    <a-entity id="mercury" mixin="planet-orbit" animation="dur: 2410;">
+      <a-entity id="mercury-name" mixin="planet-orbit planet-name" animation="dur: 2410;" position="1.5 0 0">
+        <a-text value="Mercury" mixin="planet-text"></a-text>
+      </a-entity>
+      <a-sphere mixin="mercury-mixin planet-orbit" animation="dur: 58600;  to: 0 -360 0">
       </a-sphere>
     </a-entity>
 
-    <a-entity id="venus" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 6152;
-easing: linear;">
-      <a-sphere src="#venus-texture" position="2 0 -0" radius="0.15" animation="
-property: rotation;
-to: 0 -360 0;
-loop: true;
-dur: 243000;
-easing: linear;">
+<!-- ******** Venus ******** -->
+    <a-torus id="venus-orbit" mixin="orbit-axis-mixin" radius="2"></a-torus>
+    <a-entity id="venus" mixin="planet-orbit" position="0 0 0" animation="dur: 6152;">
+      <a-entity id="mercury-name" mixin="planet-orbit planet-name" animation="dur: 6152;" position="2 0 0">
+        <a-text value="Venus" mixin="planet-text"></a-text>
+      </a-entity>
+      <a-sphere mixin="venus-mixin planet-orbit" animation="to: 0 -360 0; dur: 243000;">
       </a-sphere>
     </a-entity>
 
-    <a-entity id="earth" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 10000;
-easing: linear;">
-      <a-sphere src="#earth-texture" position="2.5 0 0" radius="0.15" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 1000;
-easing: linear;">
-      </a-sphere>
-      <a-sphere src="#earth-clouds" opacity="0.99" position="2.5 0 0" radius="0.155" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 990;
-easing: linear;">
-      </a-sphere>
-    </a-entity>
+<!-- ******** Earth ******** --> <!-- ******** Who stole the moon? ******** -->
+<a-torus id="earth-orbit" mixin="orbit-axis-mixin" radius="2.5"></a-torus>
+<a-entity id="earth" mixin="planet-orbit" animation="dur: 10000;">
+  <a-entity id="earth-name" mixin="planet-orbit planet-name" animation="dur: 10000;" position="2.5 0 0">
+    <a-text value="Earth" mixin="planet-text"></a-text>
+  </a-entity>
+  <a-sphere id="planet-earth" mixin="earth-mixin planet-orbit" animation="dur: 1000;">
+  </a-sphere>
+</a-entity>
 
+<!-- ******** Mars ******** -->
     <a-entity id="mars" position="0 0 0" animation="
 property: rotation;
 to: 0 360 0;
@@ -131,11 +155,12 @@ easing: linear;">
       </a-sphere>
     </a-entity>
 
+<!-- ******** Jupiter ******** -->
     <a-entity id="jupiter" position="0 0 0" animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 11861;
+dur: 119048;
 easing: linear;">
       <a-sphere src="#jupiter-texture" position="4.5 0 0" radius="0.5" animation="
 property: rotation;
@@ -146,11 +171,12 @@ easing: linear;">
       </a-sphere>
     </a-entity>
 
+<!-- ******** Saturn ******** -->
     <a-entity id="saturn" position="0 0 0" animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 29500;
+dur: 295000;
 easing: linear;">
       <a-entity position="6 0 0">
         <a-entity rotation="-28 0 0">
@@ -168,11 +194,12 @@ easing: linear;">
       </a-entity>
     </a-entity>
 
+<!-- ******** Uranus ******** -->
     <a-entity id="uranus" position="0 0 0" animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 84000;
+dur: 840000;
 easing: linear;">
       <a-sphere src="#uranus-texture" position="7.5 0 0" radius="0.3" animation="
 property: rotation;
@@ -183,11 +210,12 @@ easing: linear;">
       </a-sphere>
     </a-entity>
 
+<!-- ******** Neptune ******** -->
     <a-entity id="neptune" position="0 0 0" animation="
 property: rotation;
 to: 0 360 0;
 loop: true;
-dur: 164800;
+dur: 1666667;
 easing: linear;">
       <a-sphere src="#neptune-texture" position="9 0 0" radius="0.3" animation="
 property: rotation;
@@ -199,6 +227,8 @@ easing: linear;">
     </a-entity>
 
   </a-scene>
+
+
 </body>
 
 </html>
