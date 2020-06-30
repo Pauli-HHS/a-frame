@@ -27,8 +27,8 @@
 
       <!-- ******** global mixins ******** -->
       <a-mixin id="orbit-axis-mixin"
-        geometry="primitive: torus; radius-tubular:0.002; segments-tubular: 128;"
-        material="color: white; opacity:1;"
+        geometry="primitive: torus; radius-tubular:0.0025; segments-tubular: 256;"
+        material="color: white; opacity: 0.5;"
         rotation="90 0 0">
       </a-mixin>
 
@@ -82,6 +82,35 @@
         position="2.5 0 0">
       </a-mixin>
 
+      <a-mixin id="mars-mixin"
+        geometry="radius: 0.15;"
+        material="src: #mars-texture"
+        position="3.2 0 0">
+      </a-mixin>
+
+      <a-mixin id="jupiter-mixin"
+        geometry="radius: 0.5;"
+        material="src: #jupiter-texture"
+        position="4.5 0 0">
+      </a-mixin>
+
+      <a-mixin id="saturn-mixin"
+        geometry="radius: 0.45;"
+        material="src: #saturn-texture;"
+        position="6 0 0">
+      </a-mixin>
+
+      <a-mixin id="uranus-mixin"
+        geometry="radius: 0.3;"
+        material="src: #uranus-texture"
+        position="7.5 0 0">
+      </a-mixin>
+
+      <a-mixin id="neptune-mixin"
+        geometry="radius: 0.3;"
+        material="src: #neptune-texture"
+        position="9 0 0">
+      </a-mixin>
 
     </a-assets>
 
@@ -110,7 +139,7 @@
     <a-sphere id="sun-flares" mixin="sun-flares planet-orbit" animation="dur: 24000;"></a-sphere>
 
 <!-- ******** Mercury ******** -->
-    <a-torus id="mercury-orbit" mixin="orbit-axis-mixin" radius="1.5"></a-torus>
+    <a-torus mixin="orbit-axis-mixin" radius="1.5"></a-torus>
     <a-entity id="mercury" mixin="planet-orbit" animation="dur: 2410;">
       <a-entity id="mercury-name" mixin="planet-orbit planet-name" animation="dur: 2410;" position="1.5 0 0">
         <a-text value="Mercury" mixin="planet-text"></a-text>
@@ -120,7 +149,7 @@
     </a-entity>
 
 <!-- ******** Venus ******** -->
-    <a-torus id="venus-orbit" mixin="orbit-axis-mixin" radius="2"></a-torus>
+    <a-torus mixin="orbit-axis-mixin" radius="2"></a-torus>
     <a-entity id="venus" mixin="planet-orbit" position="0 0 0" animation="dur: 6152;">
       <a-entity id="mercury-name" mixin="planet-orbit planet-name" animation="dur: 6152;" position="2 0 0">
         <a-text value="Venus" mixin="planet-text"></a-text>
@@ -130,7 +159,7 @@
     </a-entity>
 
 <!-- ******** Earth ******** --> <!-- ******** Who stole the moon? ******** -->
-<a-torus id="earth-orbit" mixin="orbit-axis-mixin" radius="2.5"></a-torus>
+<a-torus mixin="orbit-axis-mixin" radius="2.5"></a-torus>
 <a-entity id="earth" mixin="planet-orbit" animation="dur: 10000;">
   <a-entity id="earth-name" mixin="planet-orbit planet-name" animation="dur: 10000;" position="2.5 0 0">
     <a-text value="Earth" mixin="planet-text"></a-text>
@@ -140,90 +169,55 @@
 </a-entity>
 
 <!-- ******** Mars ******** -->
-    <a-entity id="mars" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 18809;
-easing: linear;">
-      <a-sphere src="#mars-texture" position="3.2 0 0" radius="0.15" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 1300;
-easing: linear;">
+<a-torus mixin="orbit-axis-mixin" radius="3.2"></a-torus>
+    <a-entity id="mars" mixin="planet-orbit" animation="dur: 18809;">
+      <a-entity id="mars-name" mixin="planet-orbit planet-name" animation="dur: 18809;" position="3.2 0 0">
+        <a-text value="Mars" mixin="planet-text"></a-text>
+      </a-entity>
+      <a-sphere id="planet-mars" mixin="mars-mixin planet-orbit" animation="dur: 1300;">
       </a-sphere>
     </a-entity>
 
 <!-- ******** Jupiter ******** -->
-    <a-entity id="jupiter" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 119048;
-easing: linear;">
-      <a-sphere src="#jupiter-texture" position="4.5 0 0" radius="0.5" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 410;
-easing: linear;">
+<a-torus mixin="orbit-axis-mixin" radius="4.5"></a-torus>
+    <a-entity id="jupiter" mixin="planet-orbit" animation="dur: 119048;">
+      <a-entity id="jupiter-name" mixin="planet-orbit planet-name" animation="dur: 119048;" position="4.5 0 0">
+        <a-text value="Jupiter" mixin="planet-text" position="-0.4 0.75 0"></a-text>
+      </a-entity>
+      <a-sphere  mixin="jupiter-mixin planet-orbit" animation="dur: 410;">
       </a-sphere>
     </a-entity>
 
 <!-- ******** Saturn ******** -->
-    <a-entity id="saturn" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 295000;
-easing: linear;">
+<a-torus mixin="orbit-axis-mixin" radius="6"></a-torus>
+    <a-entity id="saturn" mixin="planet-orbit" animation="dur: 295000;">
+      <a-entity id="saturn-name" mixin="planet-orbit planet-name" animation="dur: 295000;" position="6 0 0">
+        <a-text value="Saturn" mixin="planet-text" position="-0.4 0.75 0"></a-text>
+      </a-entity>
       <a-entity position="6 0 0">
         <a-entity rotation="-28 0 0">
-          <a-sphere src="#saturn-texture" radius="0.45" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 500;
-easing: linear;">
-          </a-sphere>
-
-          <a-cylinder id="saturn-ring" src="#saturn-ring-texture" height="0.01" radius="0.75" opacity="0.99">
-          </a-cylinder>
+          <a-sphere mixin="saturn-mixin" position="0 0 0" animation="dur: 500;"></a-sphere>
+          <a-cylinder id="saturn-ring" src="#saturn-ring-texture" height="0.01" radius="0.75" opacity="0.99"></a-cylinder>
         </a-entity>
       </a-entity>
     </a-entity>
 
 <!-- ******** Uranus ******** -->
-    <a-entity id="uranus" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 840000;
-easing: linear;">
-      <a-sphere src="#uranus-texture" position="7.5 0 0" radius="0.3" animation="
-property: rotation;
-to: 0 -360 0;
-loop: true;
-dur: 720;
-easing: linear;">
-      </a-sphere>
+<a-torus mixin="orbit-axis-mixin" radius="7.5"></a-torus>
+    <a-entity id="uranus" mixin="planet-orbit" animation="dur: 840000;">
+      <a-entity id="saturn-name" mixin="planet-orbit planet-name" animation="dur: 840000;" position="7.5 0 0">
+        <a-text value="Uranus" mixin="planet-text" position="-0.4 0.5 0"></a-text>
+      </a-entity>
+      <a-sphere mixin="uranus-mixin planet-orbit" animation="dur: 720;"></a-sphere>
     </a-entity>
 
 <!-- ******** Neptune ******** -->
-    <a-entity id="neptune" position="0 0 0" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 1666667;
-easing: linear;">
-      <a-sphere src="#neptune-texture" position="9 0 0" radius="0.3" animation="
-property: rotation;
-to: 0 360 0;
-loop: true;
-dur: 670;
-easing: linear;">
-      </a-sphere>
+<a-torus mixin="orbit-axis-mixin" radius="9"></a-torus>
+    <a-entity id="neptune" mixin="planet-orbit" animation="dur: 1666667;">
+      <a-entity id="neptune-name" mixin="planet-orbit planet-name" animation="dur: 1666667;" position="9 0 0">
+        <a-text value="Neptune" mixin="planet-text" position="-0.4 0.5 0"></a-text>
+      </a-entity>
+      <a-sphere mixin="neptune-mixin planet-orbit" animation="to: 0 -360 0; dur: 670;"></a-sphere>
     </a-entity>
 
   </a-scene>
