@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Interaction Test</title>
+<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+
+
+</head>
+
+
+<body>
+  <a-scene>
+    <a-entity id="rig" position="2.5 1.6 5" rotation="-10 25 0">
+      <a-entity id="camera" camera look-controls wasd-controls="acceleration:  100;  wsAxis:  z">
+        <a-cursor id="mouseCursor" position="0 0 -1" fuse="true"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: white; opacity: 0.5;">
+        </a-cursor>
+      </a-entity>
+    </a-entity>
+
+    <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"
+           event-set__enter="_event: mouseenter; _target: #redBox; opacity: 1;"
+           event-set__leave="_event: mouseleave; _target: #redBox; opacity: 0;"></a-box>
+
+    <a-text value="TEST" position="-1 2 -3" color="#000" id="redBox" opacity="0"></a-text>
+
+
+  </a-scene>
+</body>
+
+
+</html>
