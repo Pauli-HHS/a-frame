@@ -2,7 +2,7 @@
 
 <head>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
 </head>
 
 <body>
@@ -52,6 +52,19 @@
       <a-mixin id="planet-text"
         position="-0.25 0.5 0" align="center" visible="true">
       </a-mixin>
+
+      <a-mixin id="zoom-in"
+      animation__mouseenter="
+        property: scale;
+        to: 2 2 2;
+        startEvents: mouseenter;
+        dur: 500;"
+      animation__mouseleave="
+      property: scale;
+      to: 1 1 1;
+      startEvents: mouseleave;
+      dur: 500;">
+      ></a-mixin>
 
       <!-- ******** planet mixins ******** -->
       <a-mixin id="planet-event"></a-mixin>
@@ -131,13 +144,13 @@
     <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0"></a-entity>
 
 <!-- ******** camera rig & cursor ******** -->
-    <a-entity id="rig" position="2.5 1.6 5" rotation="-10 25 0">
+    <a-entity id="rig" position="0 5 0" rotation="-90 0 0">
       <a-entity id="camera" camera look-controls wasd-controls="acceleration:  100;  wsAxis:  z">
         <a-cursor id="mouseCursor" position="0 0 -1" fuse="true"
           geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: white; opacity: 0.5;">
         </a-cursor>
 
-      
+
       </a-entity>
     </a-entity>
 
@@ -179,7 +192,7 @@
 </a-entity>
 
 <!-- ******** Earth ******** --> <!-- ******** Who stole the moon? ******** -->
-<a-entity id="eart-system" position="0 0 0">
+<a-entity id="earth-system" position="0 0 0">
 <a-torus mixin="orbit-axis-mixin" radius="2.5"></a-torus>
 <a-entity id="earth" mixin="planet-orbit" animation="dur: 10000;">
   <a-entity id="earth-name" mixin="planet-orbit planet-name" animation="dur: 10000;" position="2.5 0 0">
