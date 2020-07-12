@@ -3,18 +3,17 @@
 <head>
   <title>My A-Frame Scene</title>
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
 </head>
 
 <body>
-  <a-scene>
+  <a-scene environment="preset: japan">
     <a-entity id="cameraRig">
       <!-- camera -->
       <a-entity id="head" camera wasd-controls look-controls></a-entity>
       <!-- hand controls -->
       <a-entity oculus-touch-controls="hand: left"></a-entity>
       <a-entity oculus-touch-controls="hand: right"></a-entity>
-      <a-entity hand-controls="left"></a-entity>
-      <a-entity hand-controls="right"></a-entity>
     </a-entity>
   </a-scene>
 </body>
