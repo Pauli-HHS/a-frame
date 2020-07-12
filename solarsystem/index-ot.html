@@ -135,7 +135,8 @@
 
 <!-- ******** camera rig & cursor ******** -->
 
-      <a-entity id="camera" camera look-controls>
+      <a-entity id="camera" camera look-controls
+      oculus-touch-controls="hand: right; model: true;">
         <!--a-cursor id="mouseCursor" position="0 0 -1" fuse="true"
           geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: white; opacity: 0.5;">
         </a-cursor-->
@@ -148,13 +149,11 @@
           laser-controls="hand: left"
 
           ></a-entity>
-<a-entity oculus-touch-controls="hand: right; model: true;"
-          laser-controls="hand: right"
+<a-entity laser-controls="hand: right"
 
           ></a-entity>
 
-<a-entity ></a-entity>
-<a-entity ></a-entity>
+
 
 
 <!-- ******** Solar systems starts here ******** -->
