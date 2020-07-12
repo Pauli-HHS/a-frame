@@ -27,7 +27,7 @@
       <img id="neptune-texture" src="media/2k_neptune.jpg">
 
       <!-- ******** Planet Audio ******** -->
-      <!--audio id="sun-sound" src="media/audio/sun_sonification.mp3" preload="auto"></audio-->
+      <audio id="sun-sound" src="media/audio/sun_sonification.mp3" preload="auto"></audio>
 
       <!-- ******** global mixins ******** -->
       <a-mixin id="orbit-axis-mixin"
@@ -66,7 +66,8 @@
       <a-mixin id="sun-mixin"
         material=" src: #sun-texture; emissive: orange; emissiveIntensity: 0.5;"
         position="0 0 0"
-        radius="1">
+        radius="1"
+        sound="src: #sun-sound;">
       </a-mixin>
 
         <a-mixin id="sun-flares"
