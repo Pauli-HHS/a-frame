@@ -1,0 +1,279 @@
+<html>
+
+<head>
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+</head>
+
+<body>
+
+  <a-scene background="color: #000" inspector>
+
+
+    <a-assets>
+      <!-- ******** textures ******** -->
+      <img id="milkyway" src="media/2k_stars.jpg">
+      <img id="sun-texture" src="media/2k_sun.jpg">
+      <img id="sun-flare" src="media/2k_sun_flares.png">
+      <img id="mercury-texture" src="media/2k_mercury.jpg">
+      <img id="venus-texture" src="media/2k_venus_atmosphere.jpg">
+      <img id="earth-texture" src="media/2k_earth_daymap.jpg">
+      <img id="earth-clouds" src="media/2k_earth_clouds.png">
+      <img id="mars-texture" src="media/2k_mars.jpg">
+      <img id="jupiter-texture" src="media/2k_jupiter.jpg">
+      <img id="saturn-texture" src="media/2k_saturn.jpg">
+      <img id="saturn-ring-texture" src="media/saturns-ring.png">
+      <img id="uranus-texture" src="media/2k_uranus.jpg">
+      <img id="neptune-texture" src="media/2k_neptune.jpg">
+
+      <!-- ******** Planet Audio ******** -->
+      <audio id="sun-sound" src="media/audio/sun_sonification.mp3" preload="auto"></audio>
+
+      <!-- ******** global mixins ******** -->
+      <a-mixin id="orbit-axis-mixin"
+        geometry="primitive: torus; radius-tubular:0.1; segments-tubular: 256;"
+        material="color: white; opacity: 0.1;"
+        rotation="90 0 0">
+      </a-mixin>
+
+      <a-mixin id="planet-orbit"
+        animation="
+        property: rotation;
+        to: 0 360 0;
+        loop: true;
+        easing: linear;">
+      </a-mixin>
+
+      <a-mixin id="planet-name"
+        animation="
+        to: 0 -360 0;"
+      </a-mixin>
+
+      <a-mixin id="planet-text"
+        position="-0.25 0.5 0" align="center" visible="true">
+      </a-mixin>
+
+
+
+
+      <!-- ******** planet mixins ******** -->
+      <a-mixin id="planet-event"></a-mixin>
+
+      <a-mixin id="planet"
+      geometry="segments-height: 72; segmentsWidth:	144;">
+      </a-mixin>
+
+      <a-mixin id="sun-mixin"
+        material=" src: #sun-texture; emissive: orange; emissiveIntensity: 0.5;"
+        position="0 0 0"
+        radius="1"
+        sound="src: #sun-sound;">
+      </a-mixin>
+
+        <a-mixin id="sun-flares"
+        material="src: #sun-flare; emissive: #ffff00; emissiveIntensity: 0.5; blending:  additive;"
+        opacity="0.99"
+        position="0 0 0"
+        radius="1.05">
+        </a-mixin>
+
+        <a-mixin id="mercury-mixin"
+        material="src: #mercury-texture"
+        position="1.5 0 0"
+        geometry="radius: 0.1;">
+        </a-mixin>
+
+        <a-mixin id="venus-mixin"
+        material="src: #venus-texture"
+        position="2 0 -0"
+        geometry="radius: 0.15;">
+        </a-mixin>
+
+      <a-mixin id="earth-mixin"
+        geometry="radius: 0.15;"
+        material="src: #earth-texture"
+        position="2.5 0 0">
+      </a-mixin>
+
+      <a-mixin id="mars-mixin"
+        geometry="radius: 0.15;"
+        material="src: #mars-texture"
+        position="3.2 0 0">
+      </a-mixin>
+
+      <a-mixin id="jupiter-mixin"
+        geometry="radius: 0.5;"
+        material="src: #jupiter-texture"
+        position="4.5 0 0">
+      </a-mixin>
+
+      <a-mixin id="saturn-mixin"
+        geometry="radius: 0.45;"
+        material="src: #saturn-texture;"
+        position="6 0 0">
+      </a-mixin>
+
+      <a-mixin id="uranus-mixin"
+        geometry="radius: 0.3;"
+        material="src: #uranus-texture"
+        position="7.5 0 0">
+      </a-mixin>
+
+      <a-mixin id="neptune-mixin"
+        geometry="radius: 0.3;"
+        material="src: #neptune-texture"
+        position="9 0 0">
+      </a-mixin>
+
+    </a-assets>
+
+    <a-sky src="#milkyway"></a-sky>
+
+
+<!-- ******** lighting ******** -->
+    <a-entity light="type: ambient; color: white; intensity: 0.25"></a-entity>
+    <a-entity light="type: point; color: white; intensity: 1" position="-1 0 0"></a-entity>
+
+<!-- ******** camera rig & cursor ******** -->
+
+      <a-entity id="camera" camera look-controls>
+        <!--a-cursor id="mouseCursor" position="0 0 -1" fuse="true"
+          geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02;" material="color: white; opacity: 0.5;">
+        </a-cursor-->
+
+
+      </a-entity>
+
+<!-- ******** Controls ******** -->
+<a-entity oculus-touch-controls="hand: left; model: true;"
+          laser-controls="hand: left"
+
+          ></a-entity>
+<a-entity oculus-touch-controls="hand: right; model: true;"
+          laser-controls="hand: right"
+          
+          ></a-entity>
+
+<a-entity ></a-entity>
+<a-entity ></a-entity>
+
+
+<!-- ******** Solar systems starts here ******** -->
+
+
+<!-- ******** The Sun ******** -->
+    <a-entity mixin="planet-name" position="0 0.75 0">
+    <a-text value="Sun" mixin="planet-text" id="sun-name"></a-text>
+    </a-entity>
+    <a-sphere id="sun" mixin="planet sun-mixin planet-orbit planet-event" animation="dur: 24000;"
+    ></a-sphere>
+    <a-sphere id="sun-flares" mixin="planet sun-flares planet-orbit" animation="dur: 24000;"></a-sphere>
+
+<!-- ******** Mercury ******** -->
+<a-entity id="mercury-system" position="0.05 0 -0.1">
+    <a-torus mixin="orbit-axis-mixin" radius="1.5"></a-torus>
+    <a-entity mixin="planet-orbit" animation="dur: 2410;">
+      <a-entity mixin="planet-orbit planet-name" animation="dur: 2410;" position="1.5 0 0">
+        <a-text value="Mercury" mixin="planet-text" id="mercury-name"></a-text>
+      </a-entity>
+      <a-sphere id="mercury" mixin="planet mercury-mixin planet-orbit planet-event" animation="dur: 58600;  to: 0 -360 0">
+      </a-sphere>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Venus ******** -->
+<a-entity id="venus-system" position="0 0 0.05">
+    <a-torus mixin="orbit-axis-mixin" radius="2"></a-torus>
+    <a-entity id="venus" mixin="planet-orbit" position="0 0 0" animation="dur: 6152;">
+      <a-entity mixin="planet-orbit planet-name" animation="dur: 6152;" position="2 0 0">
+        <a-text id="venus-name" value="Venus" mixin="planet-text"></a-text>
+      </a-entity>
+      <a-sphere mixin="planet venus-mixin planet-orbit planet-event" animation="to: 0 -360 0; dur: 243000;">
+      </a-sphere>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Earth ******** --> <!-- ******** Who stole the moon? ******** -->
+<a-entity id="earth-system" position="0 0 0">
+<a-torus mixin="orbit-axis-mixin" radius="2.5"></a-torus>
+<a-entity id="earth" mixin="planet-orbit" animation="dur: 10000;">
+  <a-entity id="earth-name" mixin="planet-orbit planet-name" animation="dur: 10000;" position="2.5 0 0">
+    <a-text value="Earth" mixin="planet-text"></a-text>
+  </a-entity>
+  <a-sphere id="planet-earth" mixin="planet earth-mixin planet-orbit planet-event" animation="dur: 1000;">
+  </a-sphere>
+</a-entity>
+</a-entity>
+
+<!-- ******** Mars ******** -->
+<a-entity id="mars-system" position="0.2 0 0.2">
+<a-torus mixin="orbit-axis-mixin" radius="3.2"></a-torus>
+    <a-entity id="mars" mixin="planet-orbit" animation="dur: 18809;">
+      <a-entity id="mars-name" mixin="planet-orbit planet-name" animation="dur: 18809;" position="3.2 0 0">
+        <a-text value="Mars" mixin="planet-text"></a-text>
+      </a-entity>
+      <a-sphere id="planet-mars" mixin="planet mars-mixin planet-orbit" animation="dur: 1300;">
+      </a-sphere>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Jupiter ******** -->
+<a-entity id="jupiter-system" position="0.1 0 0">
+<a-torus mixin="orbit-axis-mixin" radius="4.5"></a-torus>
+    <a-entity id="jupiter" mixin="planet-orbit" animation="dur: 119048;">
+      <a-entity  mixin="planet-orbit planet-name" animation="dur: 119048;" position="4.5 0 0">
+        <a-text value="Jupiter" id="jupiter-name" mixin="planet-text" position="-0.4 0.75 0"></a-text>
+      </a-entity>
+      <a-sphere  mixin="planet jupiter-mixin planet-orbit planet-event" animation="dur: 410;">
+      </a-sphere>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Saturn ******** -->
+<a-entity id="saturn-system" position="0 0 -0.2">
+<a-torus mixin="orbit-axis-mixin" radius="6"></a-torus>
+    <a-entity id="saturn" mixin="planet-orbit" animation="dur: 295000;">
+      <a-entity id="saturn-name" mixin="planet-orbit planet-name" animation="dur: 295000;" position="6 0 0">
+        <a-text value="Saturn" mixin="planet-text" position="-0.4 0.75 0"></a-text>
+      </a-entity>
+      <a-entity position="6 0 0">
+        <a-entity rotation="-28 0 0">
+          <a-sphere mixin="planet saturn-mixin" position="0 0 0" animation="dur: 500;"></a-sphere>
+          <a-cylinder id="saturn-ring" src="#saturn-ring-texture" height="0.01" radius="0.75" opacity="0.99"></a-cylinder>
+        </a-entity>
+      </a-entity>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Uranus ******** -->
+<a-entity id="uranus-system" position="-0.5 0 0">
+<a-torus mixin="orbit-axis-mixin" radius="7.5"></a-torus>
+    <a-entity id="uranus" mixin="planet-orbit" animation="dur: 840000;">
+      <a-entity id="saturn-name" mixin="planet-orbit planet-name" animation="dur: 840000;" position="7.5 0 0">
+        <a-text value="Uranus" mixin="planet-text" position="-0.4 0.5 0"></a-text>
+      </a-entity>
+      <a-sphere mixin="planet uranus-mixin planet-orbit" animation="dur: 720;"></a-sphere>
+    </a-entity>
+</a-entity>
+
+<!-- ******** Neptune ******** -->
+<a-entity id="neptune-system" position="0 0 0">
+<a-torus mixin="orbit-axis-mixin" radius="9"></a-torus>
+    <a-entity id="neptune" mixin="planet-orbit" animation="dur: 1666667;">
+      <a-entity id="neptune-name" mixin="planet-orbit planet-name" animation="dur: 1666667;" position="9 0 0">
+        <a-text value="Neptune" mixin="planet-text" position="-0.4 0.5 0"></a-text>
+      </a-entity>
+      <a-sphere mixin="planet neptune-mixin planet-orbit" animation="to: 0 -360 0; dur: 670;"></a-sphere>
+    </a-entity>
+  </a-entity>
+
+  </a-scene>
+
+<script>
+
+
+
+</script>
+</body>
+
+</html>
