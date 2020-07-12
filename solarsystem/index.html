@@ -53,18 +53,8 @@
         position="-0.25 0.5 0" align="center" visible="true">
       </a-mixin>
 
-      <a-mixin id="zoom-in"
-      animation__mouseenter="
-        property: scale;
-        to: 2 2 2;
-        startEvents: mouseenter;
-        dur: 500;"
-      animation__mouseleave="
-      property: scale;
-      to: 1 1 1;
-      startEvents: mouseleave;
-      dur: 500;">
-      ></a-mixin>
+
+
 
       <!-- ******** planet mixins ******** -->
       <a-mixin id="planet-event"></a-mixin>
@@ -153,7 +143,10 @@
 
       </a-entity>
     </a-entity>
+<!-- ******** Controls ******** -->
 
+<a-entity oculus-touch-controls="hand: left; model: true;"></a-entity>
+<a-entity oculus-touch-controls="hand: right; model: true;"></a-entity>
 
 
 <!-- ******** Solar systems starts here ******** -->
